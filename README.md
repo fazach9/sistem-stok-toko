@@ -1,49 +1,15 @@
-# 📦 Website Inventaris Gudang & Manajemen Stok Toko
+# Sistem Pencatatan Stok Toko (PHP + MySQL + Bootstrap)
 
-Aplikasi web berbasis **PHP** dan **MySQL** yang dilengkapi dengan antarmuka **Bootstrap** serta tabel interaktif **DataTables** untuk membantu pencatatan, pengelolaan transaksi, dan pemantauan stok barang secara efisien.
+## Fitur
+- Login admin (password di-hash, proteksi CSRF, query terparameter). Akun admin dibuat saat pertama kali dibuka.
+- Dashboard: jumlah barang, total unit, nilai stok, stok menipis, penjualan hari ini, grafik masuk vs keluar 7 hari, daftar perlu restock.
+- Data barang: tambah, edit, hapus, kategori, satuan, harga beli/jual, stok minimum, pencarian dan sorting (DataTables), ekspor CSV.
+- Transaksi stok: barang masuk (restock) dan keluar (terjual), stok otomatis berubah, stok tidak bisa minus, riwayat dengan filter tanggal/jenis, ekspor CSV.
 
-> *Proyek ini dikembangkan untuk mendigitalisasi pencatatan dan pemantauan ketersediaan stok barang pada operasional gudang maupun toko.*
+## Instalasi (XAMPP / Laragon)
+1. Salin folder `stok-toko` ke `htdocs` (XAMPP) atau `www` (Laragon).
+2. Nyalakan Apache dan MySQL, buka phpMyAdmin, lalu **Import** `database.sql`.
+3. Jika perlu, sesuaikan user/password database di `config.php`.
+4. Buka `http://localhost/stok-toko/` dan buat akun admin.
 
-## ✨ Fitur Utama
-- **Autentikasi Admin (`index.php` & `logout.php`):** Sistem login dan logout untuk menjaga keamanan akses data inventaris.
-- **Dashboard Ringkasan (`dashboard.php`):** Menampilkan ikhtisar informasi stok barang dan aktivitas inventaris secara ringkas.
-- **Manajemen Data Barang (`barang.php`):** Fitur tambah, lihat, ubah, dan hapus data barang yang dilengkapi pencarian dan penyortiran cepat menggunakan **DataTables**.
-- **Pencatatan Transaksi (`transaksi.php`):** Mencatat riwayat barang masuk dan keluar yang terintegrasi langsung dengan pembaruan jumlah stok.
-- **Database Terpusat (`database.sql` & `config.php`):** Penyimpanan data terstruktur menggunakan **MySQL**.
-
-## 🛠️ Teknologi yang Digunakan
-- **Backend:** PHP Native
-- **Database:** MySQL / MariaDB
-- **Frontend & UI:** HTML5, CSS3, Bootstrap
-- **Plugin Tabel:** DataTables (pencarian instan, paginasi, dan filter data)
-
-## 🗂️ Struktur Folder
-```text
-stok-toko/
-├── config.php       # Konfigurasi koneksi database MySQL
-├── database.sql     # File skema dan data awal database
-├── index.php        # Halaman login pengguna
-├── dashboard.php    # Halaman utama dashboard admin
-├── barang.php       # Halaman manajemen stok barang
-├── transaksi.php    # Halaman pencatatan transaksi stok
-├── logout.php       # Proses keluar sesi (logout)
-└── README.md        # Dokumentasi proyek
-```
-
-## 🚀 Cara Instalasi & Menjalankan
-1. **Unduh atau Clone Repository**
-   Pindahkan folder proyek ke dalam direktori web server lokal Anda (contoh: `C:\xampp\htdocs\stok-toko` untuk pengguna XAMPP).
-2. **Import Database**
-   - Buka **phpMyAdmin** melalui browser (`http://localhost/phpmyadmin`).
-   - Buat database baru (sesuaikan namanya dengan konfigurasi di file `config.php`).
-   - Pilih tab **Import**, lalu pilih dan unggah file `database.sql`.
-3. **Konfigurasi Koneksi**
-   Buka file `config.php` dan sesuaikan pengaturan `host`, `username`, `password`, serta `nama database` dengan server lokal Anda.
-4. **Akses Aplikasi**
-   Jalankan Apache dan MySQL pada XAMPP, lalu buka browser dan akses `http://localhost/stok-toko`.
-
-## 👨‍💻 Pengembang
-**Faza Chansa Maulana, S.Kom**
-- **Latar Belakang:** S1 Teknik Informatika – Universitas Muria Kudus
-- **Email:** [fazachansa123@gmail.com](mailto:fazachansa123@gmail.com)
-- **Lokasi:** Kudus, Jawa Tengah, Indonesia
+Catatan: Bootstrap, jQuery, DataTables, dan Chart.js dimuat dari CDN, jadi perlu koneksi internet. Aplikasi PHP ini tidak bisa dipasang di GitHub Pages (butuh hosting PHP). Jika di-online-kan, gunakan HTTPS dan password database yang kuat.
